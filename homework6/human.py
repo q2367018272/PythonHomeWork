@@ -5,5 +5,8 @@ class human:
 
     def injured(self, aggressivity):
         self.health = self.health - aggressivity
-        self.aggressivity = self.aggressivity - 2
+        if not (aggressivity==0):
+            self.aggressivity = self.aggressivity - 2
+        if (self.aggressivity < 0):
+            self.aggressivity = 0
 
