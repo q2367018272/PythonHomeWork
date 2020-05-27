@@ -1,6 +1,6 @@
 import requests
 import re
-from multiprocessing import Pool,Manager
+from multiprocessing import Pool,Manager,Process
 
 def r_1(q):
     for i in range(200):
