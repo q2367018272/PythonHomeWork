@@ -1,0 +1,4 @@
+root@localhost用户 密码为123456 数据库为testdb 
+从表temp_icp_web2中提取url和公司地址，公司id
+将爬到的内容放入content表中
+每次爬取会重置表格

@@ -1,9 +1,22 @@
 import re
-url='http：//www.cnce.com.cn'
-url=url.replace('：',':')
-print(url)
-www.bohaicapital.com
-ffp.airchina.com.cn/app/store/shop?storeid=572
-http://www.sinosilk.cn
-http://www.daburead.com;http://www.yunpub.cn;http://www.yuntrust.cn;https://www.youzan.com/v4/dashboard;https://h5.youzan.com/v2/feature/mpBwR5W7uV;https://zxcbs.tmall.com;https://mall.jd.com/index-41477.html
-41477.html
+from multiprocessing import Pool,Manager
+import time
+from geturl import geturl
+
+def ToMysql(q):
+    while(q.empty):
+        str=q.get()
+        str=str.split(' ')
+
+
+
+
+
+if __name__=='__main__':
+    po = Pool(4)
+    q = Manager().Queue()
+    list=geturl()
+    for key,value in list.items():
+        q.put(str(key)+' '+value)
+    ToMysql(q)
+
