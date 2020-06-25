@@ -23,18 +23,28 @@ def getContent(url,k):
             pass
     html = response.text.encode(encode)
     soup = BeautifulSoup(html, 'lxml')
-    for a in soup.findAll(text=re.compile('([产品服务])')):
+    for a in soup.findAll(text=re.compile('(产品|服务)')):
         try:
             #print(a)
             stringg=stringg+a
+            try:
+                stringg=stringg+a.parent.parent.get_text()
+            except:
+                pass
             if(k==1):
-                stringg=stringg+getContent(url+a.parent['href'],0)
+                try:
+                    stringg=stringg+getContent(url+a.parent['href'],0)
+                except:
+                    pass
         except:
             pass
+        continue
     if(stringg=='' and k==1):
         stringg='无相关信息'
     if len(stringg)>1000:
         stringg=stringg[0:999]
+    stringg=stringg.replace('\n','')
+    stringg=stringg.replace(' ','')
     return stringg
 
 #print(getContent("http://www.nec-pbx.com/",1))

@@ -7,8 +7,6 @@ import pymysql
 def ToMysql(q):
     db = pymysql.connect("localhost", "root", "123456", "testdb")
     cursor = db.cursor()
-    sql = "truncate table content"
-    cursor.execute(sql)
     while (q.empty):
         str = q.get()
         str = str.split(' ')
